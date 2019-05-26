@@ -12,7 +12,7 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
-
+const port = process.env.PORT || 3000
 
 // MONGOOSE/MODEL CONFIG
 var blogSchema = new mongoose.Schema({
@@ -111,6 +111,6 @@ app.delete("/blogs/:id", function(req, res) {
     });
 });
 
-app.listen(process.env.PORT, process.env.IP, function(){
-   console.log("Server is running!"); 
+app.listen(port, function(){
+   console.log("Server is running!"+ port); 
 });
